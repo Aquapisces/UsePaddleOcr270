@@ -15,8 +15,11 @@ int main(int argc, char** argv)
 	std::vector<cv::String> cv_all_names;
 	cv::glob(FLAGS_image_dir, cv_all_names);
 	std::vector<cv::String> cv_all_img_names;
+
+	// test memory leak
     delete ocr;
     ocr = nullptr;
+
 	for (int i = 0; i < cv_all_names.size(); i++)
 	{
 		cv::Mat img = cv::imread(cv_all_names[i], cv::IMREAD_COLOR);
@@ -55,11 +58,7 @@ int main(int argc, char** argv)
 	std::cout << "Run completed.\n";
 	img_list.clear();
 	ocr_results.clear();
+
 	delete ocr;
 	ocr = nullptr;
-	int a = 1;
-	while (1)
-	{
-		int c = 1;
-	}
 }
